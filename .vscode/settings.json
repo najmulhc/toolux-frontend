@@ -3,8 +3,5 @@
   "workbench.colorTheme": "Night Owl",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  },
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
-  "git.ignoreLimitWarning": true
+  }
 }
