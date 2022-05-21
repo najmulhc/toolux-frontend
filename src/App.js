@@ -4,7 +4,11 @@ import { useQuery } from "react-query";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import auth from "./firebase.init";
+import Blogs from "./Pages/Blogs/Blogs";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Portfolio from "./Pages/Portfolio/Portfolio";
 import Header from "./Pages/Shared/Header";
 
 function App() {
@@ -26,7 +30,11 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} /> 
+        <Route path="/blog" element={<Blogs />} /> 
+        <Route path="/portfolio" element={<Portfolio /> } /> 
       </Routes>
     </div>
   );
