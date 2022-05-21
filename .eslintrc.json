@@ -9,6 +9,7 @@
     "jsx-a11y/no-noninteractive-tabindex":"off",
     "jsx-a11y/label-has-associated-control":"off",
     "react/function-component-definition": "off",
+    "react/prop-types":"off",
     "import/order": "warn",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",

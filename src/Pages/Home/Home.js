@@ -1,10 +1,12 @@
 import React from 'react'
 import Banner from './Banner'
+import BusinessSum from "./BusinessSum"
 
 const Home = () => (
   <main>
     
-    <Banner/>
+    <Banner />
+    <BusinessSum /> 
     </main>
   )
 
