@@ -8,6 +8,7 @@ import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/Login/Register";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import Footer from "./Pages/Shared/Footer";
 import Header from "./Pages/Shared/Header";
@@ -34,7 +35,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/blog" element={<Blogs />} /> 
         <Route path="/portfolio" element={<Portfolio />} /> 
-        
+        <Route path="/register" element={<Register /> } /> 
       </Routes>
       <Footer/> 
     </div>

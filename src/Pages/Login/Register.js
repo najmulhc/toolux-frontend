@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import Google from "../../Components/Google";
 import Heading from "../../Components/Heading";
+import auth from "../../firebase.init";
+import UseToken from "../../Hooks/useUsers";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const onSubmit = (data) => {
+    const { email, password, displayName } = data;
+    setFormData(data);
+    createUserWithEmailAndPassword(email, password);
+  };
+  const updateName = async ({ displayName }) => {
+    await updateProfile({ displayName });
+  };
+  let token = "";
+
+  useEffect(() => {
+    if (user) {
+      if (!user.user.displayName) {
+        UseToken(user.user);
+        console.log("no name found");
+        console.log(user.user);
+        updateName(formData.displayName);
+        navigate("/");
+      } else {
+        console.log("user name updated");
+      }
+    }
+  }, [user]);
+
   return (
     <div>
       <div className="min-h-screen bg-no-repeat bg-cover bg-center">
@@ -20,7 +55,22 @@ const Register = () => {
               <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <Heading>Login</Heading>
+                    <Heading>Register</Heading>
+                  </div>
+                  <div className="my-3">
+                    <label
+                      className="block text-md mb-2 text-left font-medium text-neutral"
+                      htmlFor="displayName"
+                    >
+                      Name
+                    </label>
+                    <input
+                      className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none"
+                      type="text"
+                      name="displayName"
+                      placeholder="yourName"
+                      {...register("displayName")}
+                    />
                   </div>
                   <div className="my-3">
                     <label
@@ -70,16 +120,19 @@ const Register = () => {
                 <Google />
                 <p className="mt-8">
                   {" "}
-                  Dont have an account?{" "}
-                  <span className="cursor-pointer text-sm text-blue-600">
+                  Already have an account?{" "}
+                  <Link
+                    to="/login"
+                    className="cursor-pointer text-sm text-secondary"
+                  >
                     {" "}
-                    Join free today
-                  </span>
+                    Login here
+                  </Link>
                 </p>
               </div>
             </div>
           </div>
-          <div className="bg-accent">
+          <div className="bg-accent hidden md:block">
             <h1>this is somethisbg </h1>
           </div>
         </div>

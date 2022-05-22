@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import Google from "../../Components/Google";
 import Heading from "../../Components/Heading";
+import auth from "../../firebase.init";
+import UseToken from "../../Hooks/useUsers";
 
 const Login = () => {
   const {
@@ -10,12 +14,26 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signInWithEmailAndPassword(email, password);
+  };
+  const navigate = useNavigate();
+ 
+  useEffect(() => {
+    if (user?.user) {
+    UseToken(user?.user);
+     navigate("/")
+    }
+  }, [user]);
+   
   return (
     <div>
       <div className="min-h-screen bg-no-repeat bg-cover bg-center">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-          <div className="bg-accent">
+          <div className="bg-accent hidden md:block">
             <h1>this is somethisbg </h1>
           </div>
 
@@ -71,14 +89,17 @@ const Login = () => {
                   </div>
                 </form>
                 {/* google sign in  */}
-                <Google /> 
+                <Google />
                 <p className="mt-8">
                   {" "}
                   Dont have an account?{" "}
-                  <span className="cursor-pointer text-sm text-blue-600">
+                  <Link
+                    to="/register"
+                    className="cursor-pointer text-sm text-secondary"
+                  >
                     {" "}
                     Join free today
-                  </span>
+                  </Link>
                 </p>
               </div>
             </div>
