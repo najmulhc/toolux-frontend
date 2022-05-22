@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Google from "../../Components/Google";
 import Heading from "../../Components/Heading";
 
-const Login = () => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -15,10 +15,6 @@ const Login = () => {
     <div>
       <div className="min-h-screen bg-no-repeat bg-cover bg-center">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-          <div className="bg-accent">
-            <h1>this is somethisbg </h1>
-          </div>
-
           <div className="flex min-h-screen items-center justify-center">
             <div className="bg-primary bg-opacity-30 w-[350px]  p-8 rounded-md">
               <div>
@@ -71,7 +67,7 @@ const Login = () => {
                   </div>
                 </form>
                 {/* google sign in  */}
-                <Google /> 
+                <Google />
                 <p className="mt-8">
                   {" "}
                   Dont have an account?{" "}
@@ -83,9 +79,12 @@ const Login = () => {
               </div>
             </div>
           </div>
+          <div className="bg-accent">
+            <h1>this is somethisbg </h1>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-export default Login;
+export default Register;

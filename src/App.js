@@ -23,9 +23,7 @@ function App() {
   };
 
 
-  if (data) {
-    console.log(data);
-  }
+
 
   return (
     <div className="App">
@@ -35,7 +33,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/blog" element={<Blogs />} /> 
-        <Route path="/portfolio" element={<Portfolio /> } /> 
+        <Route path="/portfolio" element={<Portfolio />} /> 
+        
       </Routes>
       <Footer/> 
     </div>
