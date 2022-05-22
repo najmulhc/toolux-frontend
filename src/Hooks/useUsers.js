@@ -3,7 +3,7 @@
 const UseToken = (user) => {
 
   const { email } = user;
-  fetch(`http://localhost:5000/user/${email}`, {
+  fetch(`https://hilly-view.herokuapp.com/user/${email}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
