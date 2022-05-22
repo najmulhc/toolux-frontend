@@ -7,7 +7,7 @@ import Heading from "../../Components/Heading";
 import auth from "../../firebase.init";
 import UseToken from "../../Hooks/useUsers";
 
-const Login = () => {
+const Login = ({forom} ) => {
   const {
     register,
     handleSubmit,
@@ -25,9 +25,12 @@ const Login = () => {
   useEffect(() => {
     if (user?.user) {
     UseToken(user?.user);
-     navigate("/")
+    
     }
   }, [user]);
+  if (user) {
+    navigate(forom || "/");
+  }
    
   return (
     <div>

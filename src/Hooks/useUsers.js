@@ -1,8 +1,6 @@
-
-
 const UseToken = (user) => {
-
   const { email } = user;
+  console.log(user);
   fetch(`https://hilly-view.herokuapp.com/user/${email}`, {
     method: "POST",
     headers: {

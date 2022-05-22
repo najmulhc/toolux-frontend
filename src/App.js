@@ -3,6 +3,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import ProtectedRoute from "./Components/ProtectedRoute";
 import auth from "./firebase.init";
 import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -32,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} /> 
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} /> 
         <Route path="/blog" element={<Blogs />} /> 
         <Route path="/portfolio" element={<Portfolio />} /> 
         <Route path="/register" element={<Register /> } /> 
