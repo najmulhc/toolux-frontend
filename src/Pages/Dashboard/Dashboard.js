@@ -27,8 +27,8 @@ const Dashboard = () => {
 
  
   return (
-    <div>
-      <div className="w-60 h-full shadow-md bg-secondary bg-opacity-20 px-1 absolute">
+    <div className="flex ">
+      <div className="w-60 m-0  shadow-md bg-secondary bg-opacity-20 px-1  h-screen">
         <ul className="relative">
           <li className="relative">
             <Link
