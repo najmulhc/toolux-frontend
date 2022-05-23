@@ -1,6 +1,5 @@
 const UseToken = (user) => {
-  const { email } = user;
-  console.log(user);
+  const { email } = user; 
   fetch(`https://hilly-view.herokuapp.com/user/${email}`, {
     method: "POST",
     headers: {
@@ -8,10 +7,10 @@ const UseToken = (user) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+    .then((data) => {  
       const { token } = data;
       localStorage.setItem("accessKey", token);
+   
       return token;
     });
 };

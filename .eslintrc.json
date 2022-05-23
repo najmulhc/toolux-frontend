@@ -11,6 +11,8 @@
     "react/function-component-definition": "off",
     "react/prop-types":"off",
     "import/order": "warn",
+    "consistent-return":"off",
+    "no-underscore-dangle":"off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "react/jsx-filename-extension": "off",

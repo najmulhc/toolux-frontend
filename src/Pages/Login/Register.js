@@ -38,7 +38,7 @@ const Register = () => {
   };
   useEffect(() => {
     if (user) {
-       
+      UseToken(user?.user);
         call();
     
     }
@@ -109,7 +109,7 @@ const Register = () => {
                       className="mt-4 mb-3 w-full btn btn-primary hover:btn-secondary py-2 rounded-md transition duration-100"
                       type="submit"
                     >
-                      Login now
+                     Register
                     </button>
                   </div>
                 </form>
