@@ -7,6 +7,9 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import auth from "./firebase.init";
 import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import Review from "./Pages/Dashboard/Review";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
@@ -33,7 +36,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} /> 
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} >
+          <Route path="/dashboard/profile" element={<MyProfile /> } />
+          <Route path="/dashboard/my-orders" element={<MyOrders />} /> 
+          <Route path="/dashboard/add-review" element={<Review /> } /> 
+        </Route>
         <Route path="/blog" element={<Blogs />} /> 
         <Route path="/portfolio" element={<Portfolio />} /> 
         <Route path="/register" element={<Register /> } /> 

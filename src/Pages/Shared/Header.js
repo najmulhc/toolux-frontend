@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { TiThMenu } from "react-icons/ti";
 import { Link } from "react-router-dom";
@@ -8,6 +8,10 @@ import navLogo from "../../Img/nav-logo.png";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  const [finalUser, setfinalUser] = useState({});
+  useEffect(() => {
+    setfinalUser(user)
+  }, [user])
   const logOut = () => {
     signOut(auth);
     localStorage.removeItem("accessKey");
@@ -57,7 +61,7 @@ const Header = () => {
       <div className="navbar-end">
         <ul className="menu menu-horizontal p-0 hidden md:block">{nav}</ul>
         {user? <button onClick={logOut} type="submit" className="btn btn-primary">
-         Log out 
+          {finalUser?.displayName} Log out 
         </button>:<Link to="/login" className="btn btn-primary">
           login
         </Link>}

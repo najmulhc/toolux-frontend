@@ -1,5 +1,8 @@
-import React, { useEffect } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import React, { useEffect, useState } from "react";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Google from "../../Components/Google";
@@ -7,7 +10,8 @@ import Heading from "../../Components/Heading";
 import auth from "../../firebase.init";
 import UseToken from "../../Hooks/useUsers";
 
-const Login = ({forom} ) => {
+const Login = ({ forom }) => {
+
   const {
     register,
     handleSubmit,
@@ -21,17 +25,16 @@ const Login = ({forom} ) => {
     signInWithEmailAndPassword(email, password);
   };
   const navigate = useNavigate();
- 
+
   useEffect(() => {
     if (user?.user) {
-    UseToken(user?.user);
-    
+      UseToken(user?.user);
+      
     }
   }, [user]);
-  if (user) {
-    navigate(forom || "/");
-  }
-   
+  if (user?.user) {
+    navigate(forom || "/")
+   }
   return (
     <div>
       <div className="min-h-screen bg-no-repeat bg-cover bg-center">
@@ -92,7 +95,7 @@ const Login = ({forom} ) => {
                   </div>
                 </form>
                 {/* google sign in  */}
-                <Google />
+                <Google forom={ forom}/>
                 <p className="mt-8">
                   {" "}
                   Dont have an account?{" "}

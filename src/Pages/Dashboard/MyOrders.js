@@ -1,7 +1,8 @@
 import React from 'react'
+import Heading from '../../Components/Heading'
 
 const MyOrders = () => (
-    <div>MyOrders</div>
+   <Heading>My Orders </Heading>
   )
 
 export default MyOrders

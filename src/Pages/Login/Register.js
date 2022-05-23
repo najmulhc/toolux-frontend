@@ -19,33 +19,30 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const [diplayName, setDisplayName] = useState("");
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const onSubmit = (data) => {
     const { email, password, displayName } = data;
-    setFormData(data);
+    setDisplayName(displayName);
     createUserWithEmailAndPassword(email, password);
   };
-  const updateName = async ({ displayName }) => {
-    await updateProfile({ displayName });
-  };
-  let token = "";
 
+  if (localStorage.getItem("accessKey")) {
+    navigate("/");
+  }
+
+  const call = async () => {
+    await updateProfile({ displayName:diplayName });
+  };
   useEffect(() => {
     if (user) {
-      if (!user.user.displayName) {
-        UseToken(user.user);
-        console.log("no name found");
-        console.log(user.user);
-        updateName(formData.displayName);
-        navigate("/");
-      } else {
-        console.log("user name updated");
-      }
+       
+        call();
+    
     }
-  }, [user]);
-
+  },[user])
   return (
     <div>
       <div className="min-h-screen bg-no-repeat bg-cover bg-center">
