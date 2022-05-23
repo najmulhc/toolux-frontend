@@ -4,15 +4,17 @@ import Heading from "../../Components/Heading";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const { data, isLoading, error } = useQuery("noting", () =>
+  const [count , setCount] = useState(0)
+  useEffect(() => {
     fetch("http://localhost:5000/users", {
       method: "GET",
       headers: {
         "content-type": "application/json",
         authentication: `bearer ${localStorage.getItem("accessKey")}`,
-      },
+      } 
     }).then((res) => res.json())
-  );
+    .then(data => setUsers(data.users))
+   },[count])
   const makeAdmin = (email) => {
       const user = {email}
       const url = `http://localhost:5000/user/admin/${email}`;
@@ -24,16 +26,33 @@ const Users = () => {
         body: JSON.stringify(user)
       })
       .then(res => res.json())
-    .then(final => console.log(final))
-    }
-  useEffect(() => {
-    if (data) {
-      setUsers(data.users);
-    }
-  }, [data]);
-      if (error) {
-        console.log(error)
-    }
+        .then(final => {
+          console.log(final)
+          let test = count;
+          test += 1;
+          setCount(test)
+        })
+  }
+  const deleteUser = (email) => {
+    console.log(email)
+    const url = `http://localhost:5000/user/${email}`;
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(final => {
+        console.log(final)
+        let test = count;
+        test += 1;
+        setCount(test)
+      })
+    
+
+  }
+ 
   if (users) {
     return (
       <main className="w-full h-screen flex flex-col justify-center items-center">
@@ -54,13 +73,20 @@ const Users = () => {
                 ><td className="px-8 py-2 text-lg font-medium text-secondary ">
                     {user.email}
                   </td> 
-                  {user.role === "user" && (
+                  {user.role === "user" ? (
                     <td className="px-8 py-2 text-lg ">
                       <button className="btn btn-sm btn-success" type="submit" onClick={() => makeAdmin(user.email)}>
                         make admin
                       </button>
+                      <button className="btn btn-sm btn-danger mx-4" type="submit" onClick={() => deleteUser(user.email)}>
+                       Delete user
+                      </button>
                     </td>
-                  )} 
+                ) : ( <td className="px-8 py-2 text-lg ">
+                 <button className="btn btn-sm btn-warning btn-disabled" type="submit" >
+                  admin
+                 </button>
+               </td> )} 
                 </tr>
               ))}
             </tbody>
