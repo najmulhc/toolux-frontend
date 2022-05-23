@@ -79,7 +79,7 @@ const Users = () => {
                       <button className="btn btn-sm btn-success" type="submit" onClick={() => makeAdmin(user.email)}>
                         make admin
                       </button>
-                      <button className="btn btn-sm btn-danger mx-4" type="submit" onClick={() => deleteUser(user.email)}>
+                      <button className="btn btn-sm btn-error mx-4" type="submit" onClick={() => deleteUser(user.email)}>
                        Delete user
                       </button>
                     </td>

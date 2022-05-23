@@ -30,7 +30,9 @@ const AddProduct = () => {
             },
             body: JSON.stringify(product)
         }).then(res => res.json())
-        .then(final => console.log(final))
+        .then(final => {
+             
+        })
     };
      
   return (
