@@ -39,7 +39,8 @@ const Users = () => {
     fetch(url, {
       method: "DELETE",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        "authentication":`bearer ${localStorage.getItem("accessKey")}`
       }
     })
       .then(res => res.json())
@@ -55,7 +56,7 @@ const Users = () => {
  
   if (users) {
     return (
-      <main className="w-full h-screen flex flex-col justify-center items-center">
+      <main className="w-full h-screen flex flex-col justify-start items-center">
         <Heading> All users </Heading>
         {users && (
           <table className=" rounded-xl border border-primary p-1 shadow-md text-left ">

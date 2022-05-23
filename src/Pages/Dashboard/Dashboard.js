@@ -41,6 +41,7 @@ const Dashboard = () => {
               My Profile
             </Link>
           </li>
+          {role === "user" && <>
           <li className="relative">
             <Link to="/dashboard/my-orders"
               className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden font-medium text-neutral text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
@@ -61,7 +62,9 @@ const Dashboard = () => {
               Add a review
             </Link>
           </li>
-          {role === "admin" && <li className="relative">
+          </>}
+          {role === "admin" && <>
+          <li className="relative">
             <Link to="/dashboard/users"
               className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden font-medium text-neutral text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
               href="#!"
@@ -70,7 +73,38 @@ const Dashboard = () => {
             >
              All users
             </Link>
-          </li>}
+            </li>
+            <li className="relative">
+            <Link to="/dashboard/manage-orders"
+              className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden font-medium text-neutral text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+              href="#!"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="dark"
+            >
+             Manage Orders
+            </Link>
+            </li>
+            <li className="relative">
+            <Link to="/dashboard/manage-products"
+              className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden font-medium text-neutral text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+              href="#!"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="dark"
+            >
+             Manage Products
+            </Link>
+            </li>
+            <li className="relative">
+            <Link to="/dashboard/add-product"
+              className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden font-medium text-neutral text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out"
+              href="#!"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="dark"
+            >
+             Add Product
+            </Link>
+          </li>
+          </>}
         </ul>
       </div>
       <div className="w-full h-screen "><Outlet /></div>
