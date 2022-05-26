@@ -10,26 +10,32 @@ const Header = () => {
   const [user] = useAuthState(auth);
   const [finalUser, setfinalUser] = useState({});
   useEffect(() => {
-    setfinalUser(user)
-  }, [user])
+    setfinalUser(user);
+  }, [user]);
   const logOut = () => {
     signOut(auth);
     localStorage.removeItem("accessKey");
-  }
+  };
   const nav = (
     <>
       <li>
         <Link className="text-neutral font-semibold text-center" to="/">
           Home
         </Link>
-        <Link className="text-neutral font-semibold text-center" to="/portfolio">
+        <Link
+          className="text-neutral font-semibold text-center"
+          to="/portfolio"
+        >
           Portfolio
         </Link>
-        <Link className="text-neutral font-semibold text-center" to="/dashboard">
+        <Link
+          className="text-neutral font-semibold text-center"
+          to="/dashboard"
+        >
           Dashboard
         </Link>
         <Link className="text-neutral font-semibold text-center" to="/blog">
-         Blog
+          Blog
         </Link>
       </li>
     </>
@@ -60,11 +66,27 @@ const Header = () => {
 
       <div className="navbar-end">
         <ul className="menu menu-horizontal p-0 hidden md:block">{nav}</ul>
-        {user? <button onClick={logOut} type="submit" className="btn btn-primary">
-          {finalUser?.displayName} Log out 
-        </button>:<Link to="/login" className="btn btn-primary">
-          login
-        </Link>}
+
+        {user ? (
+          <>
+            {" "}
+            <span className="text-neutral font-semibold text-center">
+              {" "}
+              {finalUser?.displayName}{" "}
+            </span>
+            <button
+              onClick={logOut}
+              type="submit"
+              className="btn btn-primary ml-2"
+            >
+              Log out
+            </button>{" "}
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-primary">
+            login
+          </Link>
+        )}
       </div>
     </div>
   );

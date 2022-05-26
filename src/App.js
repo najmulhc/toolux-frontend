@@ -1,5 +1,6 @@
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { Toaster } from "react-hot-toast";
 import { useQuery } from "react-query";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -80,6 +81,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Toaster />
       <Footer />
     </div>
   );
