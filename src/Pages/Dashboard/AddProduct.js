@@ -23,7 +23,7 @@ const AddProduct = () => {
             stock: tstock, 
             minOrder: tminOrder
         }
-        fetch("http://localhost:5000/product", {
+        fetch("https://hilly-view.herokuapp.com/product", {
             method: "POST", 
             headers: {
                 "content-type":"application/json"

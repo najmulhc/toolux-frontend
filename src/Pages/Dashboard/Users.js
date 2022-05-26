@@ -6,7 +6,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [count , setCount] = useState(0)
   useEffect(() => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://hilly-view.herokuapp.com/users", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -17,7 +17,7 @@ const Users = () => {
    },[count])
   const makeAdmin = (email) => {
       const user = {email}
-      const url = `http://localhost:5000/user/admin/${email}`;
+      const url = `https://hilly-view.herokuapp.com/user/admin/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -35,7 +35,7 @@ const Users = () => {
   }
   const deleteUser = (email) => {
     console.log(email)
-    const url = `http://localhost:5000/user/${email}`;
+    const url = `https://hilly-view.herokuapp.com/user/${email}`;
     fetch(url, {
       method: "DELETE",
       headers: {

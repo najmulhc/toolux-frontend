@@ -7,7 +7,7 @@ const ManageProducts = () => {
   const [selected, setSelected] = useState({});
   const [time, setTime] = useState(10);
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://hilly-view.herokuapp.com/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [time]);

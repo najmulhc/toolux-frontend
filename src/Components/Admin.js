@@ -11,7 +11,7 @@ const Admin = ({ children }) => {
   const { role } = dbData;
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/user/admin/${user.email}`, {
+      fetch(`https://hilly-view.herokuapp.com/user/admin/${user.email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

@@ -2,7 +2,7 @@ import React from "react";
 
 const DeleteModal = ({ product, setTime }) => {
     const deleteProduct = (item) => {
-        fetch(`http://localhost:5000/product/${item._id}`, {
+        fetch(`https://hilly-view.herokuapp.com/product/${item._id}`, {
             method: "DELETE", 
             headers: {
                 "content-type":"application/json"
