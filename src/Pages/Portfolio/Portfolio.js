@@ -12,7 +12,7 @@ const Portfolio = () =>  (
             <img src="https://i.ibb.co/6YLtMgg/280512704-1229218437620216-1370335974306163024-n.jpg" alt="280512704-1229218437620216-1370335974306163024-n"  className="w-96 h-96 my-32"/>
         </div>
         <Heading >Skills I have </Heading>
-        <p className="font-medium text-slate-800 text-lg mt-4 text-left">I have gained some knowledge in modern web technologies that helps me to develop web applications. This skill includes technologies like,
+        <p className="font-medium text-slate-800 text-lg mt-4 text-left mb-4">I have gained some knowledge in modern web technologies that helps me to develop web applications. This skill includes technologies like,
             <li>HTML5</li>
             <li>CSS3</li>
             <li>CSS Frameworks and libraries like Bootstrap, TailwindCSS etc.</li>
@@ -21,6 +21,10 @@ const Portfolio = () =>  (
             <li>JSON</li>
             <li>ReactJs</li>
             <li>NodeJs etc.</li>
+        </p>
+        <Heading >My Education </Heading>
+        <p className="font-medium text-slate-800 text-lg mt-4 text-left mb-8">I am a under-gradutate student of first year in the University of Dhaka which is known as the best University in Bangladesh. I am doing my bachalors degree in Management Information Systems(MIS) as major. But I feel more pation in Computer Science than my major. So I use internet to learn concepts that are being tought to the Computer Science students so that I do not feel sad that I am not a CS student and I can be ready to work in the software development industry. 
+          
         </p>
         {/* projects */}
         <Heading > Recent Projects</Heading>
