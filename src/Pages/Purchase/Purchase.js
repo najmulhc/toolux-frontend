@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
@@ -13,7 +13,7 @@ const Purchase = () => {
   const { productId } = useParams();
   const [orderAmount, setorderAmount] = useState(0);
   const { data, isLoading, isError } = useQuery("singleProduct", () =>
-    axios(`http://localhost:5000/product/${productId}`)
+    axios(` https://hilly-view.herokuapp.com/product/${productId}`)
   );
   const [orderValid, setOrderValid] = useState(true);
   const { img, name, stock, minOrder, description, price } = item;
@@ -22,15 +22,28 @@ const Purchase = () => {
       toast.error("need to select how many products you want to order")
     } else {
       let quantity = parseInt(orderAmount);
-      const orderInfo = {
-        user: user.email,
+      const date = new Date();
+      const orderDate =`${ date.getDate()}/${date.getMonth().toString()}/${date.getFullYear()}`;
+      const order = {
+        customer: user.email,
         productId,
         product: item.name,
         quantity, 
         cost: orderAmount*item.price, 
         state: "unpaid",
+      orderDate
       }
-      console.log(orderInfo)
+      fetch("https://hilly-view.herokuapp.com/order", {
+        method: "POST", 
+        headers: {
+          "content-type": "application/json",
+          "authentication": `Bearer ${localStorage.getItem("accessKey")}`
+        },
+        body:JSON.stringify(order)
+      }).then(res => res.json())
+        .then(final => {
+        console.log(final)
+      })
     }
   }
   useEffect(() => {

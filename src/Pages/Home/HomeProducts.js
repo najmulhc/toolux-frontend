@@ -7,7 +7,7 @@ import SingleProduct from "./SingleProduct";
 const HomeProducts = () => {
   const [products, setProducts] = useState([]);
   const { isLoading, data, isError } = useQuery("products", () =>
-    axios(`http://localhost:5000/product`)
+    axios(` https://hilly-view.herokuapp.com/product`)
   );
   useEffect(() => {
     if (data) {
