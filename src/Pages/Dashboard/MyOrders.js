@@ -14,7 +14,7 @@ const MyOrders = () => {
   },[user])
   return (
     <div className="h-full overflow-y-scroll md:w-full ">
-      <Heading>My Orders {orders.length} </Heading>
+      <Heading>My Orders</Heading>
       <table className="mx-auto rounded-xl shadow-md w-96 md:w-auto overflow-x-scroll  bg-white">
         <thead className="text-white bg-secondary rounded-md">
           <th className="px-4 py-2">Date of order</th> 
