@@ -25,7 +25,7 @@ const HomeProducts = () => {
       <Heading>Products</Heading>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {
-          products.map(product => <SingleProduct product={product}/>)
+          products.map(product => <SingleProduct product={product} key={product._id}/>)
       }
      </div>
     </section>
