@@ -25,7 +25,7 @@ const Banner = () => (
         <img
           className="object-cover object-center rounded"
           alt="hero"
-          src="https://dummyimage.com/720x600"
+          src="https://i.pinimg.com/736x/f6/68/d2/f668d221388a872b81fca7cd4f246982--automotive-tools-hose.jpg"
         />
       </div>
     </div>

@@ -14,6 +14,7 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from "./Pages/Dashboard/Payment";
 import Review from "./Pages/Dashboard/Review";
 import Users from "./Pages/Dashboard/Users";
 import Home from "./Pages/Home/Home";
@@ -59,6 +60,7 @@ function App() {
               </Admin>
             }
           />
+          <Route path="/dashboard/payment/:orderId" element= {<Payment />}/>
           <Route
             path="/dashboard/add-product"
             element={

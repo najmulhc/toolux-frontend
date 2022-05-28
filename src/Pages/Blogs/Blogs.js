@@ -5,27 +5,23 @@ const Blogs = () => {
   const QnA = [
     {
       qestion:"How will you improve the performance of a React Application?", 
-      answer:"I do not have anser"
+      answer:"We can Improve ther performance of a React App by doing some simple task and by keeping some things in mind while developing. First of all we should use local state if we can and do not use prop-drilling unnecessirily. Then, we can devide a big component into pieces that helps loading time to be fast. We can also use lazy loading to our images that enhances performance the most."
     }, 
     {
       qestion:"What are the different ways to manage a state in a React application?", 
-      answer:"I do not have anser"
-    }, 
-    {
-      qestion:"How does prototypical inheritance work?", 
-      answer:"I do not have anser"
-    }, 
+      answer:"There are some options to chose from when it comes to manage states in a React app. First for most, useState hook is a good opion of local state management. but if we need to use the state from a global parsepective, then we may consider using Redux for this. We can also use contextAPI for this case as well."
+    },
     {
       qestion:"Why you do not set the state directly in React. For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts", 
-      answer:"I do not have anser"
+      answer:"We use state to store variables that will be changed in the UI. If we change the value of the state directly, it won't change the actual state directly and that will create a pending state transition. This will make some error in the multiple components where we are using the value of it. So we should not hardcode the state value directly and use setState() funtion instead."
     }, 
     {
       qestion:"You have an array of products. Each object has a name, price, description, etc. How will you implement a search to find products by name?", 
-      answer:"I do not have anser"
+      answer: "I will use array Filter method to find the produ cts that's name includes the text I am searched for. The code should look like this / const filteredProducts =  products.filter(product => product.name.includes(searchingText)). The filteredProduct variable will return the products in an array that's name includes the name I have searched."
     }, 
     {
       qestion:"What is a unit test? Why should write unit tests?", 
-      answer:"I do not have anser"
+      answer:"Unit test means an automated test of an application using units(small chunks of code ). It helps developers to think through the desing of an application before implementing the whole code. This helps to decide nit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages."
     }, 
   ];
   return (

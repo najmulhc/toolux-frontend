@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Heading from "../../Components/Heading";
 import auth from "../../firebase.init";
 
@@ -11,6 +11,7 @@ const Purchase = () => {
   const [item, setItem] = useState({});
   const [user] = useAuthState(auth)
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [orderAmount, setorderAmount] = useState(0);
   const { data, isLoading, isError } = useQuery("singleProduct", () =>
     axios(` https://hilly-view.herokuapp.com/product/${productId}`)
@@ -42,6 +43,8 @@ const Purchase = () => {
         body:JSON.stringify(order)
       }).then(res => res.json())
         .then(final => {
+          toast.success("order succeessfully placed")
+          navigate("/")
         console.log(final)
       })
     }
@@ -58,12 +61,15 @@ const Purchase = () => {
       setOrderValid(true);
     }
   }, [orderAmount]);
-  if (isLoading) {
-    return <Heading>Data is Loading</Heading>;
-  }
+
   if (isError) {
     console.log(isError);
-  }
+  }  
+  useEffect(() => {
+    if (!orderValid) {
+      toast.error("please provide a valid amount of product to order")
+    }
+  },[orderValid])
 
   return (
     <main className="container mx-auto">
@@ -89,14 +95,14 @@ const Purchase = () => {
               type="number"
               className="w-full p-2 border-b-2 border-accent mt-2  "
               placeholder="Enter how many Items you want to buy"
-              onChange={(e) => setorderAmount(e.target.value)}
+               onChange={(event)=> setorderAmount(event.target.value)}
             />
           </label>
           {orderValid ? (
             <button
               type="button"
               className="btn btn-primary w-full my-4 "
-              onClick={placeOrder}
+              onClick={ () => placeOrder()}
             >
               Place order
             </button>

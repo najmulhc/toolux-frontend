@@ -5,7 +5,7 @@ import OrderDashboard from "./OrderDashboard";
 const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
   const [product, setProduct] = useState({});
- 
+  const [lol, setlol] = useState(0)
   useEffect(() => {
     fetch("https://hilly-view.herokuapp.com/order", {
       method: "GET",
@@ -16,7 +16,7 @@ const ManageOrders = () => {
     })
       .then((response) => response.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [lol]);
   return (
     <main className="container mx-auto">
       <Heading>Manage orders </Heading>
@@ -33,7 +33,7 @@ const ManageOrders = () => {
         </thead>
         <tbody>
           {orders.map((order) => (
-           <OrderDashboard order={order} />
+            <OrderDashboard order={order} lol={ setlol}/>
           ))}
         </tbody>
       </table>
